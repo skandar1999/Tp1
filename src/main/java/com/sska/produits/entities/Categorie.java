@@ -1,4 +1,6 @@
 package com.sska.produits.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import java.util.List;
 
@@ -24,10 +26,12 @@ public class Categorie {
 	private Long idCat;
 	private String nomCat;
 	private String descriptionCat;
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "categorie")
 	private List<Produit> produits;
-	public Categorie() {}
-	public Categorie(String nomCat, String descriptionCat, List<Produit> produits)
+	
+		public Categorie(String nomCat, String descriptionCat, List<Produit> produits)
 	{
 
 	super();
@@ -35,6 +39,7 @@ public class Categorie {
 	this.descriptionCat = descriptionCat;
 	this.produits = produits;
 	}
+	
 	public Long getIdCat() {
 	return idCat;
 	}
